@@ -14,6 +14,7 @@ const orm = {
         throw err;
       }
       cb(result);
+     
     });
   },
   insertOne: function(burger, cb) {
