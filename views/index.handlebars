@@ -6,12 +6,13 @@
 
 <ul>
   {{#each burgers}}
-    {{!-- {{#if !devoured}} --}}
-    <li>{{this.burger_name}}</li>
-
-    <button value="{{this.id}}" class="devour-btn">Devour</button>
-    {{!-- {{/if}} --}}
-
+    {{#unless devoured}}
+   <li>
+     {{burger_name}}
+      <button class="devour-btn" data-id="{{id}}">Devour</button>
+      <button class="delete-btn" data-id="{{id}}">Delete</button>
+   </li>
+    {{/unless}}
   {{/each}}
 </ul>
 
@@ -20,6 +21,10 @@
 <ul>
   {{#each burgers}}
     {{#if devoured}}
+   <li>
+     {{burger_name}}
+      <button class="delete-btn" data-id="{{id}}">Delete</button>
+   </li>
     {{/if}}
   {{/each}}
 </ul>
