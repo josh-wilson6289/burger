@@ -21,13 +21,11 @@ $(function() {
 $(".create-form").on("submit", function(event) {
   // prevent default on submit event and create newBurger from input
   event.preventDefault();
-  console.log("clicked");
 
   var newBurger = {
     burger_name: $("#burger-name").val().trim()
   };
 
-  console.log(newBurger);
   // Post request to database
   $.ajax("/api/burgers", {
     type: "POST",
@@ -39,6 +37,15 @@ $(".create-form").on("submit", function(event) {
   );
 });
 
-
-  
-})
+$(".delete-btn").on("click", function(event) {
+  var id = $(this).data("id");
+  console.log("clicked");
+  $.ajax("/api/burgers/" + id, {
+    type: "DELETE"
+  }).then(
+    function() {
+      location.reload();
+    }
+  );
+}); 
+});
